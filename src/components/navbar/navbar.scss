@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #222831;
+  height: 100vh;
+}
+
+.card {
+  text-align: center;
+  background-color: #eeeeee;
+  color: white;
+  border-radius: 0;
+
+  &__logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  h3 {
+    color: #2e2d41;
+  }
+
+  h5 {
+    color: #2e2d41;
+  }
+}
+
+.menu {
+  width: 300px;
+  border-radius: 0;
+}
+
+.logout {
+  margin-top: auto;
+  margin-bottom: 5px;
+}
+
+.card__avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.p-panelmenu .p-panelmenu-panel:first-child .p-panelmenu-header > a {
+  border-radius: 0;
+}
+
+.p-panelmenu .p-panelmenu-header > a {
+  border: none;
+  background-color: #222831;
+  color: #fff;
+}

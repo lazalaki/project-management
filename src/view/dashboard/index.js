@@ -1,11 +1,18 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { homepageRoute } from "../../shared/routes";
+import Home from "./home/home";
+import Navbar from "../../components/navbar/navbar";
 
 const Dashboard = () => {
   return (
-    <Switch>
-      <Route />
-    </Switch>
+    <>
+      <Navbar />
+      <Switch>
+        <Route path={homepageRoute()} component={Home} />
+        <Redirect to={homepageRoute()} />
+      </Switch>
+    </>
   );
 };
 

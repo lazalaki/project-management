@@ -5,9 +5,11 @@ import View from "./view";
 
 function App() {
   return (
-    <BrowserRouter>
-      <View />
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <View />
+      </BrowserRouter>
+    </div>
   );
 }
 
