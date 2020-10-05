@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import { GlobalStoreProvider } from "./store/global-store";
@@ -11,9 +10,7 @@ function App() {
     <div className="app">
       <GlobalStoreProvider>
         <ReactNotification />
-        <BrowserRouter>
-          <View />
-        </BrowserRouter>
+        <View />
       </GlobalStoreProvider>
     </div>
   );

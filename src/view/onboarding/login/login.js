@@ -8,7 +8,7 @@ import { showMessage } from "../../../services/shared/toastService";
 import Input from "../../../components/input/input";
 import Butoon from "../../../components/button/button";
 import { passwordLabel, emailLabel } from "../onboardingTranslation";
-import { loginRoute, homepageRoute } from "../../../shared/routes";
+import { homepageRoute, registerRoute } from "../../../shared/routes";
 import Logo from "../../../images/scrum-board.svg";
 import { loginRequest } from "../../../services/api/auth/authService";
 import { loginFormValidation } from "./loginFormValidation";
@@ -35,9 +35,9 @@ const Login = () => {
   const handleOnClick = async () => {
     try {
       const { data } = await loginRequest(formik.values);
-      setUser(data);
-      history.push(homepageRoute());
+      setUser(data.user);
       showMessage("Success", "You have succesfully logged in", "success");
+      history.push(homepageRoute());
     } catch (error) {
       showMessage("Error", `${error}`, "danger");
     }
@@ -94,7 +94,8 @@ const Login = () => {
           <Row className="form__text">
             <Col>
               <h5>
-                Don't Have Account? Please <a href={loginRoute()}>Register</a>{" "}
+                Don't Have Account? Please{" "}
+                <a href={registerRoute()}>Register</a>{" "}
               </h5>
             </Col>
           </Row>

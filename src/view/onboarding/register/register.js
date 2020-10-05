@@ -19,7 +19,7 @@ const Register = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      username: "",
       email: "",
       password: "",
     },
@@ -56,10 +56,10 @@ const Register = () => {
               <Input
                 icon={"pi pi-user"}
                 type={"text"}
-                name={"name"}
+                name={"username"}
                 label={translate(nameLabel)}
                 onChange={formik.handleChange}
-                value={formik.values.name}
+                value={formik.values.username}
                 error={formik.errors}
               />
             </Col>
