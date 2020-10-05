@@ -14,9 +14,13 @@ import { loginRequest } from "../../../services/api/auth/authService";
 import { loginFormValidation } from "./loginFormValidation";
 
 import "../styles.scss";
+import { useContext } from "react";
+import { GlobalStore } from "../../../store/global-store";
 
 const Login = () => {
   const { t: translate } = useTranslation();
+
+  const { setUser } = useContext(GlobalStore);
 
   const formik = useFormik({
     initialValues: {
@@ -30,7 +34,8 @@ const Login = () => {
 
   const handleOnClick = async () => {
     try {
-      await loginRequest(formik.values);
+      const { data } = await loginRequest(formik.values);
+      setUser(data);
       history.push(homepageRoute());
       showMessage("Success", "You have succesfully logged in", "success");
     } catch (error) {
