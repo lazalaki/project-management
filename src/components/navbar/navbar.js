@@ -1,7 +1,9 @@
 import React from "react";
 import { PanelMenu } from "primereact/panelmenu";
 import { Card } from "primereact/card";
+
 import { ReactComponent as Avatar } from "../../images/avatar.svg";
+
 import Logo from "../../images/logo.svg";
 
 import "./navbar.scss";

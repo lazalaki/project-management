@@ -1,0 +1,19 @@
+.p-button {
+  width: 200px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.p-button {
+  background: #222831;
+  border: none;
+}
+
+.p-button-primary:hover {
+  background-color: #414d5e !important;
+}
+
+.p-button-primary--disabled {
+  background-color: grey;
+}

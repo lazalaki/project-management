@@ -1,5 +1,7 @@
 {
   "onboarding": {
-    "loginLabel": "Login label"
+    "nameLabel": "Enter Your Name",
+    "emailLabel": "Enter Your Email",
+    "passwordLabel": "Enter Your Password"
   }
 }

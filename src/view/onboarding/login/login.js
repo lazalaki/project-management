@@ -1,19 +1,98 @@
 import React from "react";
+import { Row, Col } from "react-grid-system";
 import { useTranslation } from "react-i18next";
-import { loginLabel } from "../onboardingTranslation";
-import Navbar from "../../../components/navbar/navbar";
+import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
+
+import Input from "../../../components/input/input";
+import Butoon from "../../../components/button/button";
+import { passwordLabel, emailLabel } from "../onboardingTranslation";
+import { loginRoute } from "../../../shared/routes";
+import Logo from "../../../images/scrum-board.svg";
+import { registerRequest } from "../../../services/api/auth/authService";
+
+import "../styles.scss";
+import { loginFormValidation } from "./loginFormValidation";
 
 const Login = () => {
   const { t: translate } = useTranslation();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginFormValidation(),
+  });
+
+  const history = useHistory();
+
+  const handleOnClick = async () => {
+    try {
+      await registerRequest(formik.values);
+      history.push(loginRoute());
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <div>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries
-      </p>
+    <div className="form">
+      <div className="form__card">
+        <Row className="card__image">
+          <Col></Col>
+        </Row>
+
+        <div className="card__form">
+          <h3>Log In</h3>
+          <Row>
+            <Col>
+              <img src={Logo} alt="Logo" className="form__logo" />
+            </Col>
+          </Row>
+          <Row className="form__input">
+            <Col>
+              <Input
+                icon={"pi pi-envelope"}
+                type={"email"}
+                name={"email"}
+                label={translate(emailLabel)}
+                onChange={formik.handleChange}
+                value={formik.values.email}
+                error={formik.errors}
+              />
+            </Col>
+          </Row>
+          <Row className="form__input">
+            <Col>
+              <Input
+                icon={"pi pi-lock"}
+                type={"password"}
+                name={"password"}
+                label={translate(passwordLabel)}
+                onChange={formik.handleChange}
+                value={formik.values.password}
+                error={formik.errors}
+              />
+            </Col>
+          </Row>
+          <Row className="form__button">
+            <Col>
+              <Butoon
+                label={"Register"}
+                onClick={handleOnClick}
+                disabled={!formik.dirty || !formik.isValid}
+              />
+            </Col>
+          </Row>
+          <Row className="form__text">
+            <Col>
+              <h5>
+                Already Have Account? Please <a href={loginRoute()}>Login</a>{" "}
+              </h5>
+            </Col>
+          </Row>
+        </div>
+      </div>
     </div>
   );
 };
