@@ -7,9 +7,9 @@ import { useFormik } from "formik";
 import Input from "../../../components/input/input";
 import Butoon from "../../../components/button/button";
 import { passwordLabel, emailLabel } from "../onboardingTranslation";
-import { loginRoute } from "../../../shared/routes";
+import { loginRoute, homepageRoute } from "../../../shared/routes";
 import Logo from "../../../images/scrum-board.svg";
-import { registerRequest } from "../../../services/api/auth/authService";
+import { loginRequest } from "../../../services/api/auth/authService";
 
 import "../styles.scss";
 import { loginFormValidation } from "./loginFormValidation";
@@ -29,8 +29,8 @@ const Login = () => {
 
   const handleOnClick = async () => {
     try {
-      await registerRequest(formik.values);
-      history.push(loginRoute());
+      await loginRequest(formik.values);
+      history.push(homepageRoute());
     } catch (error) {
       console.log(error);
     }
@@ -78,7 +78,7 @@ const Login = () => {
           <Row className="form__button">
             <Col>
               <Butoon
-                label={"Register"}
+                label={"Login"}
                 onClick={handleOnClick}
                 disabled={!formik.dirty || !formik.isValid}
               />
@@ -87,7 +87,7 @@ const Login = () => {
           <Row className="form__text">
             <Col>
               <h5>
-                Already Have Account? Please <a href={loginRoute()}>Login</a>{" "}
+                Don't Have Account? Please <a href={loginRoute()}>Register</a>{" "}
               </h5>
             </Col>
           </Row>
