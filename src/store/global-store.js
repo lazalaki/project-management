@@ -1,7 +1,10 @@
 import React from "react";
 import { useReducer, createContext } from "react";
 import { globalReducer, initialGlobalState } from "./global-reducer";
-import { storeInStorage } from "../services/shared/localStorageService";
+import {
+  storeInStorage,
+  removeFromStorage,
+} from "../services/shared/localStorageService";
 import { setUserAction, setLoggedInAction } from "./global-actions";
 
 export const GlobalStore = createContext({});
@@ -15,8 +18,14 @@ export const GlobalStoreProvider = ({ children }) => {
     setLoggedInAction(true, dispatch);
   };
 
+  const logout = () => {
+    removeFromStorage();
+    setUserAction(null, dispatch);
+    setLoggedInAction(false, dispatch);
+  };
+
   return (
-    <GlobalStore.Provider value={{ state, setUser }}>
+    <GlobalStore.Provider value={{ state, setUser, logout }}>
       {children}
     </GlobalStore.Provider>
   );

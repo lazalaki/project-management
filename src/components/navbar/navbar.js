@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PanelMenu } from "primereact/panelmenu";
 import { Card } from "primereact/card";
 
+import { GlobalStore } from "../../store/global-store";
 import { ReactComponent as Avatar } from "../../images/avatar.svg";
 
 import Logo from "../../images/logo.svg";
 
 import "./navbar.scss";
+import { useHistory } from "react-router-dom";
+import { loginRoute } from "../../shared/routes";
 
 const Navbar = () => {
+  const history = useHistory();
+  const { logout } = useContext(GlobalStore);
   const items = [
     {
       label: "My Projects",
@@ -20,10 +25,14 @@ const Navbar = () => {
     },
   ];
 
-  const logout = [
+  const logoutItems = [
     {
       label: "Logout",
       icon: "pi pi-fw pi-sign-out",
+      command: () => {
+        logout();
+        history.push(loginRoute());
+      },
     },
   ];
 
@@ -36,7 +45,7 @@ const Navbar = () => {
         <Avatar className="card__avatar" />
       </Card>
       <PanelMenu model={items} className="menu" />
-      <PanelMenu model={logout} className="logout" />
+      <PanelMenu model={logoutItems} className="logout" />
     </div>
   );
 };
