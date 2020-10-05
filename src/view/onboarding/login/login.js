@@ -3,6 +3,7 @@ import { Row, Col } from "react-grid-system";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import { showMessage } from "../../../services/shared/toastService";
 
 import Input from "../../../components/input/input";
 import Butoon from "../../../components/button/button";
@@ -10,9 +11,9 @@ import { passwordLabel, emailLabel } from "../onboardingTranslation";
 import { loginRoute, homepageRoute } from "../../../shared/routes";
 import Logo from "../../../images/scrum-board.svg";
 import { loginRequest } from "../../../services/api/auth/authService";
+import { loginFormValidation } from "./loginFormValidation";
 
 import "../styles.scss";
-import { loginFormValidation } from "./loginFormValidation";
 
 const Login = () => {
   const { t: translate } = useTranslation();
@@ -31,8 +32,9 @@ const Login = () => {
     try {
       await loginRequest(formik.values);
       history.push(homepageRoute());
+      showMessage("Success", "You have succesfully logged in", "success");
     } catch (error) {
-      console.log(error);
+      showMessage("Error", `${error}`, "danger");
     }
   };
   return (
