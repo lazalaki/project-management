@@ -35,7 +35,7 @@ const Login = () => {
   const handleOnClick = async () => {
     try {
       const { data } = await loginRequest(formik.values);
-      setUser(data.user);
+      setUser(data);
       showMessage("Success", "You have succesfully logged in", "success");
       history.push(homepageRoute());
     } catch (error) {

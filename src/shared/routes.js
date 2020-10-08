@@ -7,3 +7,4 @@ export const registerRoute = () => `${onboardingRoute()}/register`;
 
 //Dashboard Routes
 export const homepageRoute = () => `${dashboardRoute()}/home`;
+export const myProjectsRoute = () => `${dashboardRoute()}/projects`;

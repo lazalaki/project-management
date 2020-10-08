@@ -1,0 +1,62 @@
+.project__container .project__text > h1 {
+  text-align: center;
+}
+
+// .project__container {
+//   background-color: #eeeeee;
+// }
+
+h1 {
+  color: gray;
+  text-transform: uppercase;
+}
+
+.project__cards {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  margin: 40px 40px 0 40px;
+}
+
+.project__panel {
+  width: 350px;
+  margin: 10px;
+  height: 200px;
+  align-self: center;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+//PRIMEREACT CLASSES
+.p-panel .p-panel-header {
+  color: #fff;
+  background: rgb(34, 40, 50);
+}
+
+.p-panel .p-panel-content {
+  border: none;
+}
+
+.p-panel-content > p {
+  overflow: hidden;
+}
+
+.project__card:hover {
+  transform: translateY(-10px);
+  transition: all 0.2s;
+}
+
+@media screen and (max-width: 750px) {
+  .project__cards {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__panel {
+    width: 100%;
+  }
+
+  .project__container {
+    width: 100%;
+  }
+}

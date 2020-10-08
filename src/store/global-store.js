@@ -12,9 +12,10 @@ export const GlobalStore = createContext({});
 export const GlobalStoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(globalReducer, initialGlobalState);
 
-  const setUser = (user) => {
-    storeInStorage("user", user);
-    setUserAction(user, dispatch);
+  const setUser = (userData) => {
+    storeInStorage("user", userData.user);
+    storeInStorage("token", userData.token);
+    setUserAction(userData.user, dispatch);
   };
 
   const logout = () => {

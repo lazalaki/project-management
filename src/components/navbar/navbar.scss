@@ -49,3 +49,70 @@
   background-color: #222831;
   color: #fff;
 }
+
+.nav {
+  display: none;
+}
+
+@media screen and (max-width: 750px) {
+  .card {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+  .logout {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+    &__menu--closed {
+      display: block;
+      background-color: #222831;
+      border-radius: 100%;
+      padding: 3px;
+      position: fixed;
+      left: 20px;
+      top: 20px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    &__menu--opened {
+      background-color: #222831;
+      height: 100vh;
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+    }
+  }
+
+  .opened__icon {
+    background-color: #222831;
+    border-radius: 100%;
+    padding: 3px;
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .opened__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-size: 25px;
+    margin-top: 70px;
+  }
+
+  .opened__link {
+    color: white;
+    margin-top: 15px;
+  }
+}
