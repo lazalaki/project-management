@@ -13,6 +13,7 @@ import {
   loginRoute,
   myProjectsRoute,
   homepageRoute,
+  createProjectRoute,
 } from "../../shared/routes";
 import { useState } from "react";
 
@@ -38,6 +39,9 @@ const Navbar = () => {
     {
       label: "Create Project",
       icon: "pi pi-fw pi-pencil",
+      command: () => {
+        history.push(createProjectRoute());
+      },
     },
   ];
 
@@ -51,7 +55,6 @@ const Navbar = () => {
       },
     },
   ];
-  console.log(showMenu);
   return (
     <div className="container">
       <div className="nav" onClick={() => setShowMenu(!showMenu)}>
@@ -65,7 +68,7 @@ const Navbar = () => {
               <Link to={myProjectsRoute()} className="opened__link">
                 My Projects
               </Link>
-              <Link to="#" className="opened__link">
+              <Link to={createProjectRoute()} className="opened__link">
                 Create Project
               </Link>
               <Link to={loginRoute()} onClick={logout} className="opened__link">

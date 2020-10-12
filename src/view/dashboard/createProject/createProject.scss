@@ -1,0 +1,67 @@
+.project__create {
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-top: 50px;
+}
+.create__card {
+  background-color: #eeeeee;
+  box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 60%;
+  height: 70%;
+  margin: auto;
+}
+
+.create__button {
+  margin-top: 50px;
+}
+
+.p-inputtext {
+  margin-top: 40px;
+  width: 80%;
+}
+
+.p-inputtextarea {
+  margin-top: 40px;
+  border-radius: 2px;
+}
+
+.p-button {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.inputtext__error {
+  border: 1px solid red;
+}
+
+.label__error {
+  color: red;
+}
+
+.woooork {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  align-self: flex-start;
+}
+
+// .project__title {
+//   display: flex;
+//   text-align: center;
+//   width: 70%;
+//   flex-direction: column;
+// }
+
+// .project__description {
+//   display: flex;
+//   text-align: center;
+//   width: 70%;
+//   flex-direction: column;
+// }

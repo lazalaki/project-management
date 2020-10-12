@@ -7,7 +7,6 @@ import { useState } from "react";
 import { Panel } from "primereact/panel";
 
 import "./myProjects.scss";
-import { getFromStorage } from "../../../services/shared/localStorageService";
 
 const MyProjects = () => {
   const [isLoading, setIsLoading] = useState(true);

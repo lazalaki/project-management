@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 
 import Input from "../../../components/input/input";
-import Butoon from "../../../components/button/button";
+import ButtonComp from "../../../components/button/button";
 import { nameLabel, passwordLabel, emailLabel } from "../onboardingTranslation";
 import { loginRoute } from "../../../shared/routes";
 import Logo from "../../../images/scrum-board.svg";
@@ -13,6 +13,7 @@ import { registerRequest } from "../../../services/api/auth/authService";
 
 import "../styles.scss";
 import { registerFormValidation } from "./registerFormValidation";
+import { showMessage } from "../../../services/shared/toastService";
 
 const Register = () => {
   const { t: translate } = useTranslation();
@@ -31,6 +32,7 @@ const Register = () => {
   const handleOnClick = async () => {
     try {
       await registerRequest(formik.values);
+      showMessage("Success", "You have succesfully created account", "success");
       history.push(loginRoute());
     } catch (error) {
       console.log(error);
@@ -92,7 +94,7 @@ const Register = () => {
           </Row>
           <Row className="form__button">
             <Col>
-              <Butoon
+              <ButtonComp
                 label={"Register"}
                 onClick={handleOnClick}
                 disabled={!formik.dirty || !formik.isValid}

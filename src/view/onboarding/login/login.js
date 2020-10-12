@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { showMessage } from "../../../services/shared/toastService";
 
 import Input from "../../../components/input/input";
-import Butoon from "../../../components/button/button";
+import ButtonComp from "../../../components/button/button";
 import { passwordLabel, emailLabel } from "../onboardingTranslation";
 import { homepageRoute, registerRoute } from "../../../shared/routes";
 import Logo from "../../../images/scrum-board.svg";
@@ -84,7 +84,7 @@ const Login = () => {
           </Row>
           <Row className="form__button">
             <Col>
-              <Butoon
+              <ButtonComp
                 label={"Login"}
                 onClick={handleOnClick}
                 disabled={!formik.dirty || !formik.isValid}

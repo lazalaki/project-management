@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 
 import "./button.scss";
 
-const Butoon = ({ label, onClick, disabled }) => {
+const ButtonComp = ({ label, onClick, disabled }) => {
   return (
     <Button
       label={label}
@@ -14,4 +14,4 @@ const Butoon = ({ label, onClick, disabled }) => {
   );
 };
 
-export default Butoon;
+export default ButtonComp;
