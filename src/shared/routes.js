@@ -9,4 +9,4 @@ export const registerRoute = () => `${onboardingRoute()}/register`;
 export const homepageRoute = () => `${dashboardRoute()}/home`;
 export const myProjectsRoute = () => `${dashboardRoute()}/projects`;
 export const createProjectRoute = () => `${dashboardRoute()}/projects/create`;
-export const singleProjectRoute = (id) => `${dashboardRoute()}/projects/${id}`;
+export const singleProjectRoute = () => `${dashboardRoute()}/projects/:id`;

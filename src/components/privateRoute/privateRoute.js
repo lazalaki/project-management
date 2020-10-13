@@ -1,10 +1,14 @@
 import React from "react";
 import { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { loginRoute } from "../../shared/routes";
 import { GlobalStore } from "../../store/global-store";
 
-const PrivateRoute = ({ component: Component, path, allowedRoles = [] }) => {
+const PrivateRoute = ({
+  component: Component,
+  path,
+  allowedRoles = [],
+  redirect,
+}) => {
   const {
     state: { user },
   } = useContext(GlobalStore);
@@ -17,11 +21,7 @@ const PrivateRoute = ({ component: Component, path, allowedRoles = [] }) => {
     <Route
       path={path}
       render={(props) =>
-        user && isAllow ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={loginRoute()} />
-        )
+        user && isAllow ? <Component {...props} /> : <Redirect to={redirect} />
       }
     />
   );

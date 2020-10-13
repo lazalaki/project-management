@@ -6,7 +6,6 @@ import { Row, Col } from "react-grid-system";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import ButtonComp from "../../../components/button/button";
-
 import { createProjectRequest } from "../../../services/api/project/projectsService";
 import { showMessage } from "../../../services/shared/toastService";
 import CreateProjectFormValidation from "./createProjectFormValidation";
@@ -27,8 +26,9 @@ const CreateProject = () => {
 
   const createProjectHandler = async () => {
     try {
-      await createProjectRequest(formik.values);
+      const { data } = await createProjectRequest(formik.values);
       showMessage("Success", "You have succesfully created project", "success");
+      history.push(`/dashboard/projects/${data.project.id}`);
     } catch (error) {
       console.log(error);
     }
