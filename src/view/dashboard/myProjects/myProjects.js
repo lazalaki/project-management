@@ -7,9 +7,10 @@ import {
   deleteProjectRequest,
 } from "../../../services/api/project/projectsService";
 import { Panel } from "primereact/panel";
-import { Button } from "primereact/button";
 
 import "./myProjects.scss";
+import { singleProjectRoute } from "../../../shared/routes";
+import ButtonComp from "../../../components/button/button";
 
 const MyProjects = () => {
   const history = useHistory();
@@ -34,7 +35,7 @@ const MyProjects = () => {
   }
 
   const showProjectHandler = (id) => {
-    history.push(`/dashboard/projects/${id}`);
+    history.push(`${singleProjectRoute()}/${id}`);
   };
 
   const deleteProjectHandler = async (event, id) => {
@@ -44,7 +45,7 @@ const MyProjects = () => {
   };
 
   const showButton = () => {
-    return user.role === "admin";
+    return user.role === "admin" || "superAdmin";
   };
 
   return (
@@ -63,8 +64,8 @@ const MyProjects = () => {
               <Panel className="project__panel" header={project.title}>
                 <p>{project.description}</p>
                 {showButton() ? (
-                  <Button
-                    className="project__delete"
+                  <ButtonComp
+                    type={"button-delete"}
                     label={"Delete"}
                     onClick={(event) => deleteProjectHandler(event, project.id)}
                   />

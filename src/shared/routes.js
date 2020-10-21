@@ -5,8 +5,11 @@ export const onboardingRoute = () => `/onboarding`;
 export const loginRoute = () => `${onboardingRoute()}/login`;
 export const registerRoute = () => `${onboardingRoute()}/register`;
 
-//Dashboard Routes
+//Dashboard Routes Admin Routes
+export const createProjectRoute = () => `${dashboardRoute()}/projects/create`;
+export const allUsersRoute = () => `${dashboardRoute()}/users`;
+
+//Dashboard Routes All Roles
 export const homepageRoute = () => `${dashboardRoute()}/home`;
 export const myProjectsRoute = () => `${dashboardRoute()}/projects`;
-export const createProjectRoute = () => `${dashboardRoute()}/projects/create`;
 export const singleProjectRoute = () => `${dashboardRoute()}/projects/:id`;

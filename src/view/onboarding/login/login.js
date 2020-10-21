@@ -88,6 +88,7 @@ const Login = () => {
                 label={"Login"}
                 onClick={handleOnClick}
                 disabled={!formik.dirty || !formik.isValid}
+                type={"button-secondary"}
               />
             </Col>
           </Row>

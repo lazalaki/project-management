@@ -14,13 +14,17 @@ import {
   myProjectsRoute,
   homepageRoute,
   createProjectRoute,
+  allUsersRoute,
 } from "../../shared/routes";
 import { useState } from "react";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
-  const { logout } = useContext(GlobalStore);
+  const {
+    logout,
+    state: { user },
+  } = useContext(GlobalStore);
   const items = [
     {
       label: "Home",
@@ -43,6 +47,13 @@ const Navbar = () => {
         history.push(createProjectRoute());
       },
     },
+    {
+      label: "All Users",
+      icon: "pi pi-fw pi-pencil",
+      command: () => {
+        history.push(allUsersRoute());
+      },
+    },
   ];
 
   const logoutItems = [
@@ -57,6 +68,7 @@ const Navbar = () => {
   ];
   return (
     <div className="container">
+      {/* MOBILE NAVBAR */}
       <div className="nav" onClick={() => setShowMenu(!showMenu)}>
         {showMenu ? (
           <div className="nav__menu--opened">
@@ -79,16 +91,13 @@ const Navbar = () => {
         ) : (
           <i className="pi pi-bars nav__menu--closed"></i>
         )}
-        {/* <i className="pi pi-bars nav__menu--closed"></i>
-        <div className="nav__menu--opened">
-          PLEASE WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORK
-        </div> */}
       </div>
 
+      {/* DESKTOP NAVBAR */}
       <Card className="card">
         <img src={Logo} alt="Logo" className="card__logo" />
-        <h3>Lazar Erbes</h3>
-        <h5>jelenam@gmail.com</h5>
+        <h3>{user.username}</h3>
+        <h5>{user.email}</h5>
         <Avatar className="card__avatar" />
       </Card>
       <PanelMenu model={items} className="menu" />

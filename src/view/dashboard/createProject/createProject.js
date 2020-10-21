@@ -49,7 +49,9 @@ const CreateProject = () => {
               placeholder={"Title..."}
               value={formik.values.title}
               onChange={formik.handleChange}
-              className={hasErrors("title") ? "inputtext__error" : ""}
+              className={
+                hasErrors("title") ? "inputtext__error" : "project__input"
+              }
             />
           </Col>
         </Row>
@@ -72,7 +74,11 @@ const CreateProject = () => {
               cols={15}
               value={formik.values.description}
               onChange={formik.handleChange}
-              className={hasErrors("description") ? "inputtext__error" : ""}
+              className={
+                hasErrors("description")
+                  ? "inputtext__error"
+                  : "project__textarea"
+              }
             />
           </Col>
         </Row>
@@ -97,6 +103,7 @@ const CreateProject = () => {
               cols={15}
               value={formik.values.notes}
               onChange={formik.handleChange}
+              className="project__textarea"
             />
           </Col>
         </Row>
@@ -106,10 +113,13 @@ const CreateProject = () => {
               label={"Create"}
               onClick={createProjectHandler}
               disabled={!formik.dirty}
+              type={"button-primary"}
             />
             <ButtonComp
               label={"Cancel"}
               onClick={() => formik.resetForm(formik.initialValues)}
+              disabled={!formik.dirty}
+              type={"button-primary"}
             />
           </Col>
         </Row>

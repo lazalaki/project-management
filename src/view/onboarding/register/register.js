@@ -98,6 +98,7 @@ const Register = () => {
                 label={"Register"}
                 onClick={handleOnClick}
                 disabled={!formik.dirty || !formik.isValid}
+                type={"button-secondary"}
               />
             </Col>
           </Row>

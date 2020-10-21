@@ -17,3 +17,40 @@
 .p-button-primary--disabled {
   background-color: grey;
 }
+
+.p-button-primary {
+  background-color: white;
+  color: #222831;
+}
+
+.button-primary {
+  background-color: #fff !important;
+  color: #222831;
+}
+
+.button-primary:hover {
+  background-color: #414d5e !important;
+}
+
+.button-secondary {
+  background-color: #222831;
+  color: white;
+}
+
+.button-secondary:hover {
+  background-color: #414d5e !important;
+  color: white;
+}
+
+.button-delete {
+  width: fit-content;
+  background-color: #222831;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 0 !important;
+  margin-left: 0 !important;
+}
+
+.button-delete:hover {
+  background-color: #414d5e !important;
+}

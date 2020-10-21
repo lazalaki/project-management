@@ -8,7 +8,7 @@
   margin-top: 50px;
 }
 .create__card {
-  background-color: #eeeeee;
+  background-color: #222831;
   box-shadow: 0.5px 0.5px 7px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   width: 60%;
@@ -20,12 +20,13 @@
   margin-top: 50px;
 }
 
-.p-inputtext {
+.project__input {
   margin-top: 40px;
   width: 80%;
 }
 
-.p-inputtextarea {
+.project__textarea {
+  width: 80%;
   margin-top: 40px;
   border-radius: 2px;
 }
@@ -51,17 +52,3 @@
 .label {
   align-self: flex-start;
 }
-
-// .project__title {
-//   display: flex;
-//   text-align: center;
-//   width: 70%;
-//   flex-direction: column;
-// }
-
-// .project__description {
-//   display: flex;
-//   text-align: center;
-//   width: 70%;
-//   flex-direction: column;
-// }
