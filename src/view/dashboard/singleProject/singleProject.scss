@@ -1,0 +1,30 @@
+.single {
+  width: 100%;
+  display: flex;
+
+  &__project {
+    width: 70%;
+  }
+
+  &__invite {
+    width: 25%;
+    height: fit-content;
+    margin: 100px 70px 0 auto;
+  }
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #eeeeee;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+.p-fieldset-legend {
+  background-color: #222831 !important;
+  color: #fff !important;
+}

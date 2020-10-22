@@ -9,7 +9,7 @@ import {
 import { Panel } from "primereact/panel";
 
 import "./myProjects.scss";
-import { singleProjectRoute } from "../../../shared/routes";
+import { goToSignleProjectRoute } from "../../../shared/routes";
 import ButtonComp from "../../../components/button/button";
 
 const MyProjects = () => {
@@ -35,7 +35,7 @@ const MyProjects = () => {
   }
 
   const showProjectHandler = (id) => {
-    history.push(`${singleProjectRoute()}/${id}`);
+    history.push(goToSignleProjectRoute(id));
   };
 
   const deleteProjectHandler = async (event, id) => {

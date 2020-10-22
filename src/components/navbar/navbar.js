@@ -1,60 +1,54 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PanelMenu } from "primereact/panelmenu";
 import { Card } from "primereact/card";
+import { useHistory, Link } from "react-router-dom";
 
 import { GlobalStore } from "../../store/global-store";
 import { ReactComponent as Avatar } from "../../images/avatar.svg";
-
+import SuperAdminMobileNav, { superAdminNav } from "./roleNav/superAdminNav";
+import AdminMobileNav, { adminNav } from "./roleNav/adminNav";
+import UserNav, { userNav } from "./roleNav/userNav";
 import Logo from "../../images/logo.svg";
+import { loginRoute } from "../../shared/routes";
 
 import "./navbar.scss";
-import { useHistory, Link } from "react-router-dom";
-import {
-  loginRoute,
-  myProjectsRoute,
-  homepageRoute,
-  createProjectRoute,
-  allUsersRoute,
-} from "../../shared/routes";
-import { useState } from "react";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
+
   const {
     logout,
     state: { user },
   } = useContext(GlobalStore);
-  const items = [
-    {
-      label: "Home",
-      icon: "pi pi-fw pi-home",
-      command: () => {
-        history.push(homepageRoute());
-      },
-    },
-    {
-      label: "My Projects",
-      icon: "pi pi-fw pi-home",
-      command: () => {
-        history.push(myProjectsRoute());
-      },
-    },
-    {
-      label: "Create Project",
-      icon: "pi pi-fw pi-pencil",
-      command: () => {
-        history.push(createProjectRoute());
-      },
-    },
-    {
-      label: "All Users",
-      icon: "pi pi-fw pi-pencil",
-      command: () => {
-        history.push(allUsersRoute());
-      },
-    },
-  ];
+
+  const nav = () => {
+    switch (user.role) {
+      case "admin":
+        return adminNav;
+      case "superAdmin":
+        return superAdminNav;
+      case "user":
+        return userNav;
+
+      default:
+        return userNav;
+    }
+  };
+
+  const responsiveNav = () => {
+    switch (user.role) {
+      case "admin":
+        return <AdminMobileNav />;
+      case "superAdmin":
+        return <SuperAdminMobileNav />;
+      case "user":
+        return <UserNav />;
+
+      default:
+        return userNav;
+    }
+  };
 
   const logoutItems = [
     {
@@ -74,18 +68,14 @@ const Navbar = () => {
           <div className="nav__menu--opened">
             <i className="pi pi-times opened__icon"></i>
             <div className="opened__links">
-              <Link to={homepageRoute()} className="opened__link">
-                Home
-              </Link>
-              <Link to={myProjectsRoute()} className="opened__link">
-                My Projects
-              </Link>
-              <Link to={createProjectRoute()} className="opened__link">
-                Create Project
-              </Link>
-              <Link to={loginRoute()} onClick={logout} className="opened__link">
+              {responsiveNav()}{" "}
+              <Link
+                to={loginRoute()}
+                onClick={logout}
+                className="opened__link--logout"
+              >
                 Logout
-              </Link>{" "}
+              </Link>
             </div>
           </div>
         ) : (
@@ -100,7 +90,7 @@ const Navbar = () => {
         <h5>{user.email}</h5>
         <Avatar className="card__avatar" />
       </Card>
-      <PanelMenu model={items} className="menu" />
+      <PanelMenu model={nav()} className="menu" />
       <PanelMenu model={logoutItems} className="logout" />
     </div>
   );

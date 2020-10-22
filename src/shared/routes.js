@@ -13,3 +13,5 @@ export const allUsersRoute = () => `${dashboardRoute()}/users`;
 export const homepageRoute = () => `${dashboardRoute()}/home`;
 export const myProjectsRoute = () => `${dashboardRoute()}/projects`;
 export const singleProjectRoute = () => `${dashboardRoute()}/projects/:id`;
+export const goToSignleProjectRoute = (id) =>
+  `${dashboardRoute()}/projects/${id} `;
