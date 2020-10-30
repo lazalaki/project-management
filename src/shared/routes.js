@@ -8,6 +8,12 @@ export const registerRoute = () => `${onboardingRoute()}/register`;
 //Dashboard Routes Admin Routes
 export const createProjectRoute = () => `${dashboardRoute()}/projects/create`;
 export const allUsersRoute = () => `${dashboardRoute()}/users`;
+export const projectMembersRoute = () =>
+  `${dashboardRoute()}/projects/:id/members`;
+export const goToProjectMembersRoute = (id) =>
+  `${dashboardRoute()}/projects/${id}/members`;
+export const updateProjectRoute = (id) =>
+  `${goToSignleProjectRoute(id)}/update`;
 
 //Dashboard Routes All Roles
 export const homepageRoute = () => `${dashboardRoute()}/home`;

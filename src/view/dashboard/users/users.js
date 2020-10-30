@@ -165,7 +165,7 @@ const Users = () => {
                 value={role}
                 options={roles}
                 onChange={(e) => setRole(e.target.value)}
-                placeholder="Search role"
+                placeholder="Update role"
               />
             )}
           />

@@ -70,7 +70,7 @@ const CreateProject = () => {
             <InputTextarea
               name={"description"}
               placeholder={"Description..."}
-              rows={5}
+              rows={10}
               cols={15}
               value={formik.values.description}
               onChange={formik.handleChange}

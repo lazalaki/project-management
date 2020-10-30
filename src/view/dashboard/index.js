@@ -1,11 +1,12 @@
 import React from "react";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, useHistory } from "react-router-dom";
 import {
   homepageRoute,
   myProjectsRoute,
   createProjectRoute,
   singleProjectRoute,
   allUsersRoute,
+  projectMembersRoute,
 } from "../../shared/routes";
 import Home from "./home/home";
 import Navbar from "../../components/navbar/navbar";
@@ -14,12 +15,20 @@ import MyProjects from "./myProjects/myProjects";
 import CreateProject from "./createProject/createProject";
 import SingleProject from "./singleProject/singleProject";
 import Users from "./users/users";
+import ProjectMembers from "./singleProject/projectMembers/projectMembers";
 
 const Dashboard = () => {
+  const history = useHistory();
   return (
     <>
       <Navbar />
       <Switch>
+        <PrivateRoute
+          path={projectMembersRoute()}
+          component={ProjectMembers}
+          allowedRoles={["user", "admin", "superAdmin"]}
+        />
+
         <PrivateRoute
           path={homepageRoute()}
           component={Home}
@@ -47,6 +56,7 @@ const Dashboard = () => {
           allowedRoles={["user", "admin", "superAdmin"]}
           redirect={myProjectsRoute()}
         />
+
         <PrivateRoute
           path={allUsersRoute()}
           component={Users}

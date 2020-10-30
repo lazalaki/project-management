@@ -1,0 +1,21 @@
+.home {
+  width: 100%;
+
+  &__title {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 20px;
+  }
+
+  &__title::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 90%;
+    border-bottom: 1px solid lightgray;
+  }
+}

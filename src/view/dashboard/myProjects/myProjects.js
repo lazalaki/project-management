@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 import { GlobalStore } from "../../../store/global-store";
 import {
@@ -7,15 +7,22 @@ import {
   deleteProjectRequest,
 } from "../../../services/api/project/projectsService";
 import { Panel } from "primereact/panel";
+import {
+  goToSignleProjectRoute,
+  myProjectsRoute,
+} from "../../../shared/routes";
+import ButtonComp from "../../../components/button/button";
+import Modal from "./modal/modal";
 
 import "./myProjects.scss";
-import { goToSignleProjectRoute } from "../../../shared/routes";
-import ButtonComp from "../../../components/button/button";
 
 const MyProjects = () => {
+  const location = useLocation();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [projects, setProjects] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [singleProject, setSingleProject] = useState();
   const {
     state: { user },
   } = useContext(GlobalStore);
@@ -48,8 +55,29 @@ const MyProjects = () => {
     return user.role === "admin" || "superAdmin";
   };
 
+  const openModalHandler = (event, project) => {
+    setSingleProject(project);
+    event.stopPropagation();
+    setShowModal(true);
+  };
+  const closeModalHandler = (id) => {
+    setShowModal(false);
+    history.push(myProjectsRoute());
+  };
+
+  const params = new URLSearchParams(location.search).get("id");
+
   return (
     <div className="project__container">
+      <div className="project__modal">
+        <Modal
+          show={showModal}
+          closeModalHandler={closeModalHandler}
+          project={singleProject}
+          params={params}
+          allProjects={() => getAllProjects()}
+        />
+      </div>
       <div className="project__text">
         <h1>My Projects</h1>
       </div>
@@ -64,11 +92,29 @@ const MyProjects = () => {
               <Panel className="project__panel" header={project.title}>
                 <p>{project.description}</p>
                 {showButton() ? (
-                  <ButtonComp
-                    type={"button-delete"}
-                    label={"Delete"}
-                    onClick={(event) => deleteProjectHandler(event, project.id)}
-                  />
+                  <>
+                    <ButtonComp
+                      type={"button-delete"}
+                      label={"Delete"}
+                      onClick={(event) =>
+                        deleteProjectHandler(event, project.id)
+                      }
+                    />
+
+                    {/* <Link
+                      to={{
+                        pathname: match.url,
+                        search: "id=" + project.id,
+                      }}
+                      onClick={(event) => openModalHandler(event, project)}
+                    > */}
+                    <ButtonComp
+                      type={"button-update"}
+                      label={"Edit"}
+                      onClick={(event) => openModalHandler(event, project)}
+                    />
+                    {/* </Link> */}
+                  </>
                 ) : (
                   ""
                 )}

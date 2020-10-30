@@ -43,7 +43,7 @@
 }
 
 .button-delete {
-  width: fit-content;
+  width: 30%;
   background-color: #222831;
   color: white;
   margin-top: 20px;
@@ -62,5 +62,18 @@
 }
 
 .button-add:hover {
+  background-color: #414d5e !important;
+}
+
+.button-update {
+  width: 30%;
+  background-color: #222831;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 0 !important;
+  margin-left: 5px !important;
+}
+
+.button-update:hover {
   background-color: #414d5e !important;
 }

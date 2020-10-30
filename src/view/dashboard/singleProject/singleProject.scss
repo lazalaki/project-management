@@ -2,14 +2,32 @@
   width: 100%;
   display: flex;
 
-  &__project {
+  &__left {
     width: 70%;
   }
 
+  &__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__card {
+    width: 90%;
+    margin: 30px 0;
+
+    &--card {
+      background-color: #eeeeee;
+    }
+
+    &--link {
+      text-transform: none;
+      color: #222831;
+      text-decoration: underline;
+    }
+  }
+
   &__invite {
-    width: 25%;
-    height: fit-content;
-    margin: 100px 70px 0 auto;
+    width: 90%;
   }
   &__panel {
     display: flex;
