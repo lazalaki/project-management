@@ -14,7 +14,6 @@ const ProjectMembers = () => {
     return <></>;
   }
 
-  console.log(selectedProject.members);
   return (
     <div className="members">
       <h2 className="members__title">Project Members</h2>

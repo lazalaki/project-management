@@ -17,9 +17,7 @@ h1 {
 .project__panel {
   width: 350px;
   margin: 10px;
-  height: 200px;
   align-self: center;
-  border: 1px solid #ccc;
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -29,12 +27,16 @@ h1 {
   background: rgb(34, 40, 50);
 }
 
-.p-panel .p-panel-content {
+.p-panel-content > p {
+  overflow: hidden;
+}
+
+.p-panel .p-panel-header {
   border: none;
 }
 
-.p-panel-content > p {
-  overflow: hidden;
+.p-panel-content {
+  background-color: #eeeeee !important;
 }
 
 .project__card:hover {

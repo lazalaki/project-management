@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Redirect, useHistory } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import {
   homepageRoute,
   myProjectsRoute,
@@ -18,7 +18,6 @@ import Users from "./users/users";
 import ProjectMembers from "./singleProject/projectMembers/projectMembers";
 
 const Dashboard = () => {
-  const history = useHistory();
   return (
     <>
       <Navbar />

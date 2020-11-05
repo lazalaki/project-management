@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { useHistory } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import ButtonComp from "../../../../components/button/button";
 import { updateProjectRequest } from "../../../../services/api/project/projectsService";
 
 import "./modal.scss";
-import { useState } from "react";
 
 const Modal = ({ show, closeModalHandler, project, allProjects }) => {
   useEffect(() => {

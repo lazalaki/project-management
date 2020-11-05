@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { addMemberToProjectRequest } from "../../../services/api/project/projectsService";
-import { useParams, Link, useLocation, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { useFormik } from "formik";
 import ButtonComp from "../../../components/button/button";
@@ -9,12 +9,18 @@ import { showMessage } from "../../../services/shared/toastService";
 import { GlobalStore } from "../../../store/global-store";
 import { Card } from "primereact/card";
 import Moment from "react-moment";
-import moment from "moment";
-import { goToProjectMembersRoute } from "../../../shared/routes";
+import {
+  goToProjectMembersRoute,
+  myProjectsRoute,
+} from "../../../shared/routes";
 
 import "./singleProject.scss";
+import Tasks from "./tasks/tasks";
+import TasksModal from "./tasks/tasksModal/tasksModal";
+import { useState } from "react";
 
 const SingleProject = () => {
+  const [showModal, setShowModal] = useState(false);
   const {
     state: { user, selectedProject },
     getProject,
@@ -32,21 +38,6 @@ const SingleProject = () => {
     getProject(id);
   }, []);
 
-  //DURATION TIME
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     dateTime();
-  //   }, 1000);
-  //   return () => clearInterval(interval);
-  // }, [time]);
-
-  // const dateTime = () => {
-  //   const createdAtInSeconds = moment().diff(selectedProject?.created_at);
-  //   const duration = moment.duration(createdAtInSeconds);
-  //   const currentTime = duration.format("HH:mm:ss");
-  //   setTime(currentTime);
-  // };
-
   const addMemberHandler = async () => {
     try {
       const { data } = await addMemberToProjectRequest(
@@ -62,17 +53,44 @@ const SingleProject = () => {
       console.log(error);
     }
   };
-
   const hideAddMemberPanel = () => {
     return user.role === "user";
   };
 
+  const openModalHandler = () => {
+    setShowModal(true);
+  };
+
+  const closeModalHandler = () => {
+    setShowModal(false);
+  };
   return (
     <div className="single">
-      <div className="single__left">
-        <p>{selectedProject?.title}</p>
-        <p>{selectedProject?.description}</p>
+      <div className="single__modal">
+        <TasksModal
+          show={showModal}
+          closeModal={closeModalHandler}
+          project={selectedProject}
+        />
       </div>
+      <div className="single__left">
+        <h2>
+          <a href={myProjectsRoute()}>My Projects</a> / {selectedProject?.title}
+        </h2>
+        <Tasks projectId={selectedProject?.id} />
+        {hideAddMemberPanel() ? (
+          ""
+        ) : (
+          <div className="left__button">
+            <ButtonComp
+              label={"Add Task"}
+              type={"button-add"}
+              onClick={openModalHandler}
+            />
+          </div>
+        )}
+      </div>
+
       <div className="single__right">
         <div className="single__card">
           <Card className="single__card--card">

@@ -4,9 +4,31 @@
 
   &__left {
     width: 70%;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > h2 {
+      color: lightgray;
+      margin-bottom: 20px;
+    }
+
+    & > h2 > a {
+      color: lightgray;
+
+      &:hover {
+        color: #222831;
+      }
+    }
+  }
+
+  .left__button {
+    width: 90%;
   }
 
   &__right {
+    width: 30%;
     display: flex;
     flex-direction: column;
   }

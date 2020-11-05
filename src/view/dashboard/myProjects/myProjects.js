@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { GlobalStore } from "../../../store/global-store";
 import {
@@ -52,7 +52,7 @@ const MyProjects = () => {
   };
 
   const showButton = () => {
-    return user.role === "admin" || "superAdmin";
+    return user.role === "admin" || user.role === "superAdmin";
   };
 
   const openModalHandler = (event, project) => {

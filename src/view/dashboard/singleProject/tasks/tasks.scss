@@ -1,0 +1,19 @@
+.tasks {
+  width: 90%;
+}
+
+.task {
+  width: 100%;
+  margin-bottom: 30px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dropdown {
+    width: 15%;
+  }
+}

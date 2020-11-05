@@ -1,0 +1,19 @@
+.app__spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #222831;
+  opacity: 0.6;
+  z-index: 1000;
+}
+
+.spinner__text {
+  position: fixed;
+  color: white;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1500;
+}
